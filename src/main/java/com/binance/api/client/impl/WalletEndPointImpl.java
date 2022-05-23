@@ -12,6 +12,7 @@ import java.util.List;
 
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.createService;
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.executeSync;
+import static com.binance.api.client.impl.BinanceApiServiceGenerator.getTime;
 
 public class WalletEndPointImpl implements WalletEndpoint
 {
@@ -25,7 +26,7 @@ public class WalletEndPointImpl implements WalletEndpoint
     public List<Deposit> getDepositHistory(String asset, Integer status, Long startTime, Long endTime, Integer offset, Integer limit)
     {
         return executeSync(binanceApiService.getDepositHistory(asset,status,startTime,endTime,offset,limit, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis()));
+                getTime()));
     }
 
     @Override
@@ -61,18 +62,18 @@ public class WalletEndPointImpl implements WalletEndpoint
     @Override
     public List<Withdraw> getWithdrawHistory(String asset) {
         return executeSync(binanceApiService.getWithdrawHistory(asset,null,null,null,null,null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis()));
+                getTime()));
     }
 
     @Override
     public List<Withdraw> getWithdrawHistory(long startTime, long endTime) {
         return executeSync(binanceApiService.getWithdrawHistory(null,null,startTime,endTime,null,null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis()));
+                getTime()));
     }
 
     @Override
     public FuturesTransactionList getFutureTransactionHistory(String asset, Long startTime, Long endTime, Long current, Long size) {
-        return executeSync(binanceApiService.getFutureAccountTransactionHistoryList(asset,startTime,endTime,current,size,5000L,System.currentTimeMillis()));
+        return executeSync(binanceApiService.getFutureAccountTransactionHistoryList(asset,startTime,endTime,current,size,5000L,getTime()));
     }
 
     @Override

@@ -69,6 +69,21 @@ public class BinanceApiServiceGenerator {
     private final static int LimitPerMin = 1200;
     private static long limitStartTime;
     private static long limitEndTime;
+    private static long timeDifferenceToServer;
+
+    public static void setTimeDifferenceToServer(long time)
+    {
+        timeDifferenceToServer = time;
+    }
+
+    public static long getTimeDifferenceToServer() {
+        return timeDifferenceToServer;
+    }
+
+    public static long getTime()
+    {
+        return System.currentTimeMillis() - timeDifferenceToServer;
+    }
 
     private static void handelWeightLimit()
     {

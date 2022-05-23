@@ -14,6 +14,7 @@ import com.binance.api.client.impl.BinanceApiServiceGenerator;
 import java.util.List;
 
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.executeSync;
+import static com.binance.api.client.impl.BinanceApiServiceGenerator.getTime;
 
 /**
  * Implementation of Binance's Margin REST API using Retrofit with asynchronous/non-blocking method calls.
@@ -28,7 +29,7 @@ public class BinanceApiMarginRestClientImpl implements BinanceApiMarginRestClien
 
     @Override
     public MarginAccount getAccount() {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.getMarginAccount(BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, timestamp));
     }
 
@@ -61,43 +62,43 @@ public class BinanceApiMarginRestClientImpl implements BinanceApiMarginRestClien
 
     @Override
     public MarginTransaction transfer(String asset, String amount, TransferType type) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.transfer(asset, amount, type.getValue(), BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, timestamp));
     }
 
     @Override
     public MarginTransaction borrow(String asset, String amount) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.borrow(asset, amount, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, timestamp));
     }
 
     @Override
     public LoanQueryResult queryLoan(String asset, String txId) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.queryLoan(asset, txId, timestamp));
     }
 
     @Override
     public RepayQueryResult queryRepay(String asset, String txId) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.queryRepay(asset, txId, timestamp));
     }
 
     @Override
     public RepayQueryResult queryRepay(String asset, long startTime) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.queryRepay(asset, startTime, timestamp));
     }
 
     @Override
     public MaxBorrowableQueryResult queryMaxBorrowable(String asset) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.queryMaxBorrowable(asset, timestamp));
     }
 
     @Override
     public MarginTransaction repay(String asset, String amount) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.repay(asset, amount, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, timestamp));
     }
 

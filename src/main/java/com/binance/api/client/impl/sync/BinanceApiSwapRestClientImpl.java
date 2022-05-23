@@ -15,6 +15,7 @@ import com.binance.api.client.impl.BinanceApiServiceGenerator;
 import java.util.List;
 
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.executeSync;
+import static com.binance.api.client.impl.BinanceApiServiceGenerator.getTime;
 
 /**
  * Implementation of Binance's SWAP REST API using Retrofit method calls.
@@ -34,7 +35,7 @@ public class BinanceApiSwapRestClientImpl implements BinanceApiSwapRestClient {
 
     @Override
     public Liquidity getPoolLiquidityInfo(String poolId) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         List<Liquidity> liquidities = executeSync(binanceApiService.getPoolLiquidityInfo(poolId,
                 BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
                 timestamp));
@@ -46,7 +47,7 @@ public class BinanceApiSwapRestClientImpl implements BinanceApiSwapRestClient {
 
     @Override
     public LiquidityOperationRecord addLiquidity(String poolId, String asset, String quantity) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.addLiquidity(poolId,
                 asset,
                 quantity,
@@ -56,7 +57,7 @@ public class BinanceApiSwapRestClientImpl implements BinanceApiSwapRestClient {
 
     @Override
     public LiquidityOperationRecord removeLiquidity(String poolId, SwapRemoveType type, List<String> asset, String shareAmount) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.removeLiquidity(poolId,
                 type,
                 asset,
@@ -75,14 +76,14 @@ public class BinanceApiSwapRestClientImpl implements BinanceApiSwapRestClient {
                 endTime,
                 limit,
                 BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis()));
+                getTime()));
     }
 
     @Override
     public SwapQuote requestQuote(String quoteAsset,
                                   String baseAsset,
                                   String quoteQty) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.requestQuote(quoteAsset, baseAsset, quoteQty,
                 BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
                 timestamp));
@@ -90,7 +91,7 @@ public class BinanceApiSwapRestClientImpl implements BinanceApiSwapRestClient {
 
     @Override
     public SwapRecord swap(String quoteAsset, String baseAsset, String quoteQty) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.swap(quoteAsset, baseAsset, quoteQty,
                 BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
                 timestamp));
@@ -106,7 +107,7 @@ public class BinanceApiSwapRestClientImpl implements BinanceApiSwapRestClient {
                 baseAsset,
                 limit,
                 BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis()));
+                getTime()));
     }
 
     @Override

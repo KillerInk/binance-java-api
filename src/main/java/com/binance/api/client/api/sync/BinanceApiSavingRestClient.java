@@ -15,8 +15,7 @@ public interface BinanceApiSavingRestClient {
             Long endTime,
             Long current,
             Long size,
-            Long recvWindow,
-            Long timestamp);
+            Long recvWindow);
 
     List<PurchaseRecord> getPurchaseRecord (
             String lendingType,
@@ -25,8 +24,7 @@ public interface BinanceApiSavingRestClient {
             Long endTime,
             Long current,
             Long size,
-            Long recvWindow,
-            Long timestamp
+            Long recvWindow
     );
 
     List<InterestHistory> getInterestHistory (
@@ -36,8 +34,7 @@ public interface BinanceApiSavingRestClient {
             Long endTime,
             Long current,
             Long size,
-            Long recvWindow,
-            Long timestamp
+            Long recvWindow
     );
 
 }

@@ -16,6 +16,7 @@ import com.binance.api.client.impl.BinanceApiServiceGenerator;
 import java.util.List;
 
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.executeSync;
+import static com.binance.api.client.impl.BinanceApiServiceGenerator.getTime;
 
 /**
  * Implementation of Binance's Margin REST API using Retrofit with asynchronous/non-blocking method calls.
@@ -45,7 +46,7 @@ public class BinanceApiFuturesRestClientImpl implements BinanceApiFuturesRestCli
 
     @Override
     public FuturesAccount getAccount() {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.getAccount(BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, timestamp));
     }
 
@@ -110,14 +111,14 @@ public class BinanceApiFuturesRestClientImpl implements BinanceApiFuturesRestCli
 
     @Override
     public void changePositionSideMode(PositionSideType positionSideType) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         boolean positionSide = positionSideType.equals(PositionSideType.HEDGE_MODE);
         executeSync(binanceApiService.changePositionSideMode(positionSide, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, timestamp));
     }
 
     @Override
     public List<PositionInformation> getPositionInformation(String symbol) {
-        long timestamp = System.currentTimeMillis();
+        long timestamp = getTime();
         return executeSync(binanceApiService.getPositionInformation(symbol, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, timestamp));
     }
 

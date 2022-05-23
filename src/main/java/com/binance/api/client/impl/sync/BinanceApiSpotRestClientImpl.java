@@ -23,6 +23,7 @@ import retrofit2.Call;
 import java.util.List;
 
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.executeSync;
+import static com.binance.api.client.impl.BinanceApiServiceGenerator.getTime;
 
 /**
  * Implementation of Binance's REST API using Retrofit with synchronous/blocking
@@ -185,7 +186,7 @@ public class BinanceApiSpotRestClientImpl implements BinanceApiSpotRestClient {
 
     @Override
     public Account getAccount() {
-        return getAccount(BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
+        return getAccount(BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, getTime());
     }
 
     @Override
@@ -196,53 +197,53 @@ public class BinanceApiSpotRestClientImpl implements BinanceApiSpotRestClient {
     @Override
     public List<Trade> getMyTrades(String symbol, Integer limit) {
         return getMyTrades(symbol, limit, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis());
+                getTime());
     }
 
     @Override
     public List<Trade> getMyTrades(String symbol) {
         return getMyTrades(symbol, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis());
+                getTime());
     }
 
     @Override
     public List<Trade> getMyTrades(String symbol, Long fromId) {
         return getMyTrades(symbol, null, fromId, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis());
+                getTime());
     }
 
     @Override
     public List<Trade> getMyTrades(String symbol, Long fromId,int limit) {
         return getMyTrades(symbol, limit, fromId, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis());
+                getTime());
     }
 
     @Override
     public WithdrawResult withdraw(String asset, String address, String amount, String name, String addressTag) {
         return executeSync(binanceApiService.withdraw(asset, address, amount, name, addressTag,
-                BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+                BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, getTime()));
     }
 
     @Override
     public List<Deposit> getDepositHistory(String asset) {
-        return executeSync(binanceApiService.getDepositHistory(asset,null,null,null,null,null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,System.currentTimeMillis()));
+        return executeSync(binanceApiService.getDepositHistory(asset,null,null,null,null,null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,getTime()));
     }
 
     @Override
     public List<Withdraw> getWithdrawHistory(String asset) {
         return executeSync(binanceApiService.getWithdrawHistory(asset,null,null,null,null,null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis()));
+                getTime()));
     }
 
     @Override
     public List<SubAccountTransfer> getSubAccountTransfers() {
-        return executeSync(binanceApiService.getSubAccountTransfers(System.currentTimeMillis()));
+        return executeSync(binanceApiService.getSubAccountTransfers(getTime()));
     }
 
     @Override
     public DepositAddress getDepositAddress(String asset) {
         return executeSync(binanceApiService.getDepositAddress(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-                System.currentTimeMillis()));
+                getTime()));
     }
 
     // user stream endpoints
@@ -295,21 +296,21 @@ public class BinanceApiSpotRestClientImpl implements BinanceApiSpotRestClient {
 
     @Override
     public DustTransferResponse dustTranfer(List<String> asset) {
-        return executeSync(binanceApiService.dustTransfer(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+        return executeSync(binanceApiService.dustTransfer(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, getTime()));
     }
 
     @Override
     public DailyAccountSnapShotSpot getDailyAccountSnapShotSpot(@Nullable Long startTime, @Nullable Long endTime, @Nullable Long limit) {
-        return executeSync(binanceApiService.getDailyAccountSnapShotSpot(DailyAccountSnapshotTypes.SPOT.name(),startTime,endTime,limit,null, System.currentTimeMillis()));
+        return executeSync(binanceApiService.getDailyAccountSnapShotSpot(DailyAccountSnapshotTypes.SPOT.name(),startTime,endTime,limit,null, getTime()));
     }
 
     @Override
     public DailyAccountSnapshotMargin getDailyAccountSnapShotMargin(@Nullable Long startTime, @Nullable Long endTime, @Nullable Long limit) {
-        return executeSync(binanceApiService.getDailyAccountSnapShotMargin(DailyAccountSnapshotTypes.MARGIN.name(),startTime,endTime,limit,null, System.currentTimeMillis()));
+        return executeSync(binanceApiService.getDailyAccountSnapShotMargin(DailyAccountSnapshotTypes.MARGIN.name(),startTime,endTime,limit,null, getTime()));
     }
 
     @Override
     public DailyAccountSnapshotFutures getDailyAccountSnapShotFutures(@Nullable Long startTime, @Nullable Long endTime, @Nullable Long limit) {
-        return executeSync(binanceApiService.getDailyAccountSnapShotFutures(DailyAccountSnapshotTypes.FUTURES.name(),startTime,endTime,limit,null, System.currentTimeMillis()));
+        return executeSync(binanceApiService.getDailyAccountSnapShotFutures(DailyAccountSnapshotTypes.FUTURES.name(),startTime,endTime,limit,null, getTime()));
     }
 }
