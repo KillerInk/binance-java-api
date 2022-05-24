@@ -66,7 +66,7 @@ public class BinanceApiServiceGenerator {
     }
 
     public static int limit;
-    private final static int LimitPerMin = 1200;
+    private final static int LimitPerMin = 1180;
     private static long limitStartTime;
     private static long limitEndTime;
     private static long timeDifferenceToServer;
@@ -88,9 +88,11 @@ public class BinanceApiServiceGenerator {
     private static void handelWeightLimit()
     {
         if (limit >= LimitPerMin) {
-            Log.d("executeSync", "limit reached wait 5 sec");
+
             try {
-                Thread.sleep(limitEndTime - System.currentTimeMillis());
+                long sleep = limitEndTime - System.currentTimeMillis();
+                Log.d("executeSync", "limit reached wait " + sleep+"ms");
+                Thread.sleep(sleep);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

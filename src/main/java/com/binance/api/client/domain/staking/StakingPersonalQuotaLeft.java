@@ -13,5 +13,5 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StakingPersonalQuotaLeft {
     @JsonProperty("leftPersonalQuota")
-    String leftPersonalQuota;
+    public String leftPersonalQuota;
 }

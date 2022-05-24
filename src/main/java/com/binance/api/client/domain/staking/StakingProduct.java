@@ -40,33 +40,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class StakingProduct {
 
     @JsonProperty("projectId")
-    String projectID;
+    public String projectID;
     @JsonProperty("detail")
-    Detail detail;
+    public Detail detail;
     @JsonProperty("quota")
-    Quota quota;
+    public Quota quota;
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Detail
     {
         @JsonProperty("asset")
-        String asset;
+        public String asset;
         @JsonProperty("rewardAsset")
-        String reward_asset;
+        public String reward_asset;
         @JsonProperty("duration")
-        int duration;
+        public int duration;
         @JsonProperty("renewable")
-        boolean renewable;
+        public boolean renewable;
         @JsonProperty("apy")
-        long apy;
+        public long apy;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Quota
     {
         @JsonProperty("totalPersonalQuota")
-        long totalPersonalQuota;
+        public long totalPersonalQuota;
         @JsonProperty("minimum")
-        long minimum;
+        public long minimum;
     }
 }

@@ -39,55 +39,55 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class StakingPosition
 {
     @JsonProperty("positionId")
-    String positionId;
+    public String positionId;
     @JsonProperty("projectId")
-    String projectId;
+    public String projectId;
     @JsonProperty("asset")
-    String asset;
+    public String asset;
     @JsonProperty("amount")
-    String amount;
+    public String amount;
     @JsonProperty("purchaseTime")
-    Long purchaseTime;
+    public Long purchaseTime;
     @JsonProperty("duration")
-    Long duration;
+    public Long duration;
     @JsonProperty("accrualDays")
-    Long accrualDays;
+    public Long accrualDays;
     @JsonProperty("rewardAsset")
-    String rewardAsset;
+    public String rewardAsset;
     @JsonProperty("APY")
-    String APY;
+    public String APY;
     @JsonProperty("rewardAmt")
-    String rewardAmt;
+    public String rewardAmt;
     @JsonProperty("extraRewardAsset")
-    String extraRewardAsset;
+    public String extraRewardAsset;
     @JsonProperty("extraRewardAPY")
-    String extraRewardAPY;
+    public String extraRewardAPY;
     @JsonProperty("estExtraRewardAmt")
-    String estExtraRewardAmt;
+    public String estExtraRewardAmt;
     @JsonProperty("nextInterestPay")
-    String nextInterestPay;
+    public String nextInterestPay;
     @JsonProperty("nextInterestPayDate")
     Long nextInterestPayDate;
-    @JsonProperty("payInterestPeriod")
+    public @JsonProperty("payInterestPeriod")
     String payInterestPeriod;
-    @JsonProperty("redeemAmountEarly")
+    public @JsonProperty("redeemAmountEarly")
     String redeemAmountEarly;
-    @JsonProperty("interestEndDate")
+    public @JsonProperty("interestEndDate")
     Long interestEndDate;
-    @JsonProperty("deliverDate")
+    public @JsonProperty("deliverDate")
     Long deliverDate;
-    @JsonProperty("redeemPeriod")
+    public @JsonProperty("redeemPeriod")
     String redeemPeriod;
-    @JsonProperty("redeemingAmt")
+    public @JsonProperty("redeemingAmt")
     String redeemingAmt;
-    @JsonProperty("partialAmtDeliverDate")
+    public @JsonProperty("partialAmtDeliverDate")
     Long partialAmtDeliverDate;
-    @JsonProperty("canRedeemEarly")
+    public @JsonProperty("canRedeemEarly")
     String canRedeemEarly;
-    @JsonProperty("renewable")
+    public @JsonProperty("renewable")
     String renewable;
-    @JsonProperty("type")
+    public @JsonProperty("type")
     String type;
-    @JsonProperty("status")
+    public @JsonProperty("status")
     String status;
 }

@@ -21,21 +21,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StakingRecord {
     @JsonProperty("positionId")
-    String positionId;
+    public String positionId;
     @JsonProperty("time")
-    Long time;
+    public Long time;
     @JsonProperty("asset")
-    String asset;
+    public String asset;
     @JsonProperty("project")
-    String project;
+    public String project;
     @JsonProperty("amount")
-    String amount;
+    public String amount;
     @JsonProperty("lockPeriod")
-    int lockPeriod;
+    public int lockPeriod;
     @JsonProperty("deliverDate")
-    Long deliverDate;
+    public Long deliverDate;
     @JsonProperty("type")
-    String type;
+    public String type;
     @JsonProperty("status")
-    String status;
+    public String status;
 }

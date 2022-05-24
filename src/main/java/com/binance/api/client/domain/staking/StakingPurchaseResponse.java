@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StakingPurchaseResponse {
     @JsonProperty("postitionId")
-    int postitionId;
+    public int postitionId;
     @JsonProperty("success")
-    String success;
+    public String success;
 }

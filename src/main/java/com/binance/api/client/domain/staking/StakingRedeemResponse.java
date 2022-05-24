@@ -6,5 +6,5 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StakingRedeemResponse {
     @JsonProperty("success")
-    String success;
+    public String success;
 }
